@@ -43,7 +43,7 @@ module.exports = {
   // This should realistically only be one repo, the project repo you are currently in.
   // The default token "should" only have access to this repo...
   repositories: [
-    "SwanseaUniversityMedical/DARE-Control",
+    "SwanseaUniversityMedical/5S-TES-analysis-tools",
   ],
 
   branchPrefix: "upgrade/",
