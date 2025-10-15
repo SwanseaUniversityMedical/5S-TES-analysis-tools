@@ -4,16 +4,20 @@ on:
   pull_request:
     # Only consider PRs that change files for this asset, including ci scripts
     paths:
-      - '.github/workflows/sonar.yaml'
-      - 'src/**'
+      - ".github/workflows/sonar.yaml"
+      - "Tre-Hasura/**"
+      - "Tre-SQL-PG/**"
+      - "Tre-SQL-Trino/**"
   push:
     # Only release off of release and maintenance branches for this asset
     branches:
-      - 'main'
+      - "main"
     # Only consider pushes that change files for this asset, including ci scripts.
     paths:
-      - '.github/workflows/sonar.yaml'
-      - 'src/**'
+      - ".github/workflows/sonar.yaml"
+      - "Tre-Hasura/**"
+      - "Tre-SQL-PG/**"
+      - "Tre-SQL-Trino/**"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -51,5 +55,3 @@ jobs:
       sonar-url: ${{ vars.SONAR_URL }}
     secrets:
       sonar-token: ${{ secrets.SONAR_TOKEN }}
-
-

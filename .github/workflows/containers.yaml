@@ -5,7 +5,7 @@ on:
     # Only consider PRs that change files for this asset, including ci scripts.
     paths:
       - ".github/workflows/containers.yaml"
-      - "Tre-Harusa/**"
+      - "Tre-Hasura/**"
       - "Tre-SQL-PG/**"
       - "Tre-SQL-Trino/**"
   push:
@@ -15,7 +15,7 @@ on:
     # Only consider pushes that change files for this asset, including ci scripts
     paths:
       - ".github/workflows/containers.yaml"
-      - "Tre-Harusa/**"
+      - "Tre-Hasura/**"
       - "Tre-SQL-PG/**"
       - "Tre-SQL-Trino/**"
 permissions:
