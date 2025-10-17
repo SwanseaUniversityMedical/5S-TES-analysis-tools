@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "Tre-SQL-PG": {
+    "SQLRunnerPostgres": {
       "commandName": "Project"
     },
     "Docker": {

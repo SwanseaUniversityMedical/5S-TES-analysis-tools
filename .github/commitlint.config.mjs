@@ -9,7 +9,7 @@ export default {
       "always",
       [
         "GraphQLRunner-container",
-        "tre-sql-pg-container",
+        "SQLRunnerPostgres-container",
         "tre-sql-trino-container",
       ],
     ],

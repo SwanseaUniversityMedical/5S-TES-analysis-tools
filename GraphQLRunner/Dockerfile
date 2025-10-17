@@ -15,7 +15,6 @@ COPY ["GraphQLRunner.csproj", "GraphQLRunner.csproj"]
 RUN dotnet restore "GraphQLRunner.csproj"
 
 COPY . .
-WORKDIR "/GraphQLRunner"
 RUN dotnet build "GraphQLRunner.csproj" -c Release -o /app/build
 
 FROM build AS publish

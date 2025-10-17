@@ -9,10 +9,10 @@ A suite of containerized tools for flexible data extraction and analysis, design
 - **Purpose:** Flexible GraphQL query runner for Hasura endpoints.
 - [See GraphQLRunner/README.md for details](./GraphQLRunner/README.md)
 
-### 2. Tre-SQL-PG
+### 2. SQLRunnerPostgres
 
 - **Purpose:** SQL-to-CSV exporter for PostgreSQL databases.
-- [See Tre-SQL-PG/README.md for details](./Tre-SQL-PG/README.md)
+- [See SQLRunnerPostgres/README.md for details](./SQLRunnerPostgres/README.md)
 
 ### 3. Tre-SQL-Trino
 

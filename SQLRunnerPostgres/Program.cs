@@ -5,7 +5,7 @@ using Npgsql;
 
 Console.WriteLine("TREFX SQL Runner Module : Postgress");
 
-// Tre-SQL-PG.exe "--Query=select * from \"profileForm\"" --Output=data.csv
+// SQLRunnerPostgres.exe "--Query=select * from \"profileForm\"" --Output=data.csv
 
 var Token = "";
 var OutputFilename = "data.csv";
