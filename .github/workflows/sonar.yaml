@@ -7,7 +7,7 @@ on:
       - ".github/workflows/sonar.yaml"
       - "GraphQLRunner/**"
       - "SQLRunnerPostgres/**"
-      - "Tre-SQL-Trino/**"
+      - "SQLRunnerTrino/**"
   push:
     # Only release off of release and maintenance branches for this asset
     branches:
@@ -17,7 +17,7 @@ on:
       - ".github/workflows/sonar.yaml"
       - "GraphQLRunner/**"
       - "SQLRunnerPostgres/**"
-      - "Tre-SQL-Trino/**"
+      - "SQLRunnerTrino/**"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -46,12 +46,12 @@ jobs:
     secrets:
       sonar-token: ${{ secrets.SONAR_TOKEN }}
 
-  tre-sql-trino-sonar:
+  SQLRunnerTrino-sonar:
     uses: SwanseaUniversityMedical/workflows/.github/workflows/sonar-dotnet-7.yaml@v2.2.0-sonar-dotnet-7
     with:
-      project-name: "tre-sql-trino"
-      project-file: "Tre-SQL-Trino.csproj"
-      project-context: "Tre-SQL-Trino"
+      project-name: "SQLRunnerTrino"
+      project-file: "SQLRunnerTrino.csproj"
+      project-context: "SQLRunnerTrino"
       sonar-url: ${{ vars.SONAR_URL }}
     secrets:
       sonar-token: ${{ secrets.SONAR_TOKEN }}

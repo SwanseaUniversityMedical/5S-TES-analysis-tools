@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 Console.WriteLine("TREFX SQL Runner Module : Trino");
 
-// Tre-SQL-Trino.exe "--Query=select * from \"profileForm\"" --Output=data.csv
+// SQLRunnerTrino.exe "--Query=select * from \"profileForm\"" --Output=data.csv
 
 string trinoUrl = "http://localhost:8080/v1/statement";
 var Token = "";

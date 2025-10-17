@@ -14,11 +14,11 @@ A suite of containerized tools for flexible data extraction and analysis, design
 - **Purpose:** SQL-to-CSV exporter for PostgreSQL databases.
 - [See SQLRunnerPostgres/README.md for details](./SQLRunnerPostgres/README.md)
 
-### 3. Tre-SQL-Trino
+### 3. SQLRunnerTrino
 
 - **Purpose:** SQL-to-CSV exporter for Trino databases.
 
-- [See Tre-SQL-Trino/README.md for details](./Tre-SQL-Trino/README.md)
+- [See SQLRunnerTrino/README.md for details](./SQLRunnerTrino/README.md)
 
 ## Getting Started
 

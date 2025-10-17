@@ -7,7 +7,7 @@ on:
       - ".github/workflows/containers.yaml"
       - "GraphQLRunner/**"
       - "SQLRunnerPostgres/**"
-      - "Tre-SQL-Trino/**"
+      - "SQLRunnerTrino/**"
   push:
     # Only release off of release and maintenance branches for this asset
     branches:
@@ -17,7 +17,7 @@ on:
       - ".github/workflows/containers.yaml"
       - "GraphQLRunner/**"
       - "SQLRunnerPostgres/**"
-      - "Tre-SQL-Trino/**"
+      - "SQLRunnerTrino/**"
 permissions:
   contents: write
   pull-requests: write
@@ -72,17 +72,17 @@ jobs:
       cosign-password: ${{ secrets.COSIGN_PASSWORD }}
       registry-token: ${{ secrets.HARBOR_TOKEN }}
 
-  tre-sql-trino-container:
+  SQLRunnerTrino-container:
     needs: containers
     uses: SwanseaUniversityMedical/workflows/.github/workflows/bulk-pr-and-release-container.yaml@v1.1.0-bulk-containers
     with:
-      job-name: tre-sql-trino-container
+      job-name: SQLRunnerTrino-container
       registry: ${{ vars.HARBOR_REGISTRY }}
       registry-user: ${{ vars.HARBOR_USER }}
       registry-repo: ${{ vars.HARBOR_PROJECT }}/${{ vars.HARBOR_REPO }}-tre-sqltrino
       release-info: ${{ needs.containers.outputs.release-info }}
       cosign-public-key: ${{ vars.COSIGN_PUBLIC_KEY }}
-      build-file: Tre-SQL-Trino/Dockerfile
+      build-file: SQLRunnerTrino/Dockerfile
       platforms: linux/amd64,linux/arm64
     secrets:
       cosign-private-key: ${{ secrets.COSIGN_PRIVATE_KEY }}

@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "Tre-SQL-Trino": {
+    "SQLRunnerTrino": {
       "commandName": "Project"
     },
     "Docker": {

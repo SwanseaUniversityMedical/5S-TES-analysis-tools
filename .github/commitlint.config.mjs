@@ -10,7 +10,7 @@ export default {
       [
         "GraphQLRunner-container",
         "SQLRunnerPostgres-container",
-        "tre-sql-trino-container",
+        "SQLRunnerTrino-container",
       ],
     ],
     "subject-case": [RuleConfigSeverity.Error, "never", []],
