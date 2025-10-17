@@ -2,13 +2,13 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Tre_Hasura;
+using GraphQLRunner;
 using Microsoft.AspNetCore.Hosting;
 using static System.Formats.Asn1.AsnWriter;
-using Tre_Hasura.Models;
+using GraphQLRunner.Models;
 
 
-Console.WriteLine("TREFX Hashura Runner");
+Console.WriteLine("TREFX GraphQL Runner for Hasura");
 var configuration = GetConfiguration();
 
 using IHost host = Host.CreateDefaultBuilder(args).ConfigureServices

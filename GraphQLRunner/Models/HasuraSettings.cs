@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tre_Hasura.Models
+namespace GraphQLRunner.Models
 {
     public class HasuraSettings
     {

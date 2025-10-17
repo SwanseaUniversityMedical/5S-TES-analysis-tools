@@ -5,7 +5,7 @@ on:
     # Only consider PRs that change files for this asset, including ci scripts
     paths:
       - ".github/workflows/sonar.yaml"
-      - "Tre-Hasura/**"
+      - "GraphQLRunner/**"
       - "Tre-SQL-PG/**"
       - "Tre-SQL-Trino/**"
   push:
@@ -15,7 +15,7 @@ on:
     # Only consider pushes that change files for this asset, including ci scripts.
     paths:
       - ".github/workflows/sonar.yaml"
-      - "Tre-Hasura/**"
+      - "GraphQLRunner/**"
       - "Tre-SQL-PG/**"
       - "Tre-SQL-Trino/**"
 
@@ -26,12 +26,12 @@ concurrency:
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
-  tre-hasura-sonar:
+  GraphQLRunner-sonar:
     uses: SwanseaUniversityMedical/workflows/.github/workflows/sonar-dotnet-7.yaml@v2.2.0-sonar-dotnet-7
     with:
-      project-name: "tre-hasura"
-      project-file: "Tre-Hasura.csproj"
-      project-context: "Tre-Hasura"
+      project-name: "GraphQLRunner"
+      project-file: "GraphQLRunner.csproj"
+      project-context: "GraphQLRunner"
       sonar-url: ${{ vars.SONAR_URL }}
     secrets:
       sonar-token: ${{ secrets.SONAR_TOKEN }}

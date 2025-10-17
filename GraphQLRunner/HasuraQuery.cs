@@ -7,17 +7,18 @@ using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json.Linq;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Newtonsoft.Json;
-using Tre_Hasura.Models;
+using GraphQLRunner.Models;
 using System.Net.Http.Headers;
 using System.Reflection.Metadata.Ecma335;
 using System.Text.Json;
 using System.Reflection.PortableExecutable;
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection;
-using Amazon.Runtime.Internal.Util;
 using System.Text.RegularExpressions;
+using System.Net;
+using System.Net.Http.Headers;
 
-namespace Tre_Hasura
+namespace GraphQLRunner
 {
     public interface IHasuraQuery
     {

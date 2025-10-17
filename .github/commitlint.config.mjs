@@ -1,14 +1,18 @@
-import { RuleConfigSeverity } from '@commitlint/types';
+import { RuleConfigSeverity } from "@commitlint/types";
 
 export default {
-  extends: ['@commitlint/config-conventional'],
-  parserPreset: 'conventional-changelog-conventionalcommits',
+  extends: ["@commitlint/config-conventional"],
+  parserPreset: "conventional-changelog-conventionalcommits",
   rules: {
-    'scope-enum': [RuleConfigSeverity.Error, 'always', [
-        'tre-hasura-container',
-        'tre-sql-pg-container',
-        'tre-sql-trino-container'
-    ]],
-    'subject-case': [RuleConfigSeverity.Error, 'never', []],
-  }
+    "scope-enum": [
+      RuleConfigSeverity.Error,
+      "always",
+      [
+        "GraphQLRunner-container",
+        "tre-sql-pg-container",
+        "tre-sql-trino-container",
+      ],
+    ],
+    "subject-case": [RuleConfigSeverity.Error, "never", []],
+  },
 };

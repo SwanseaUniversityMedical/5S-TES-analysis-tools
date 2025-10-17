@@ -1,4 +1,4 @@
-## Tre-Hasura
+## GraphQL Runner
 
 The application is designed as a flexible GraphQL query runner for Hasura, allowing users to specify custom queries, endpoints, authentication tokens, and proxy settings via command-line arguments.
 

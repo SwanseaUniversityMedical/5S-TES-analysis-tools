@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "Tre-Hasura": {
+    "GraphQLRunner": {
       "commandName": "Project",
       "commandLineArgs": "--5TBiBFvum2a42bTd6t0gfGFLESmGErTZNhWFqPpvVBZSb89w6VrLX5IgprEs6g8PsdwL6OfEPT7LfZioMOzSk1pBYp5Htj2tUrx2oW0nnd4L5nMDQgkqU7g5xuEZTDzG @\"query {   testHasura_testing {     id     name   } }\"",
       "launchBrowser": true,

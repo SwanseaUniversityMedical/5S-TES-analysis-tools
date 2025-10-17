@@ -10,23 +10,21 @@ EXPOSE 80
 EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
-WORKDIR /src
-COPY ["Tre-Hasura/Tre-Hasura.csproj", "Tre-Hasura/"]
-COPY ["BL/BL.csproj", "BL/"]
-RUN dotnet restore "Tre-Hasura/Tre-Hasura.csproj"
-RUN dotnet restore "BL/BL.csproj"
+WORKDIR /GraphQLRunner
+COPY ["GraphQLRunner.csproj", "GraphQLRunner.csproj"]
+RUN dotnet restore "GraphQLRunner.csproj"
 
 COPY . .
-WORKDIR "/src/Tre-Hasura"
-RUN dotnet build "Tre-Hasura.csproj" -c Release -o /app/build
+WORKDIR "/GraphQLRunner"
+RUN dotnet build "GraphQLRunner.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Tre-Hasura.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "GraphQLRunner.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Tre-Hasura.dll"]
+ENTRYPOINT ["dotnet", "GraphQLRunner.dll"]
 
 COPY rootca.pem /usr/local/share/ca-certificates/chi-ansible.crt
 
