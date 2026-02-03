@@ -33,14 +33,14 @@ jobs:
   # Job name must be unique across repo to target
   # branch protection rules "required checks" properly!
   containers:
-    uses: SwanseaUniversityMedical/workflows/.github/workflows/pr-and-release-repo.yaml@v2.0.1-repo
+    uses: SwanseaUniversityMedical/workflows/.github/workflows/pr-and-release-repo.yaml@v2.1.2-repo
     with:
       job-name: containers
       release-tag-format: "v${version}-containers"
 
   GraphQLRunner-container:
     needs: containers
-    uses: SwanseaUniversityMedical/workflows/.github/workflows/bulk-pr-and-release-container.yaml@v1.1.0-bulk-containers
+    uses: SwanseaUniversityMedical/workflows/.github/workflows/bulk-pr-and-release-container.yaml@v2.1.0-bulk-containers
     with:
       job-name: GraphQLRunner-container
       registry: ${{ vars.HARBOR_REGISTRY }}
@@ -49,6 +49,9 @@ jobs:
       release-info: ${{ needs.containers.outputs.release-info }}
       cosign-public-key: ${{ vars.COSIGN_PUBLIC_KEY }}
       build-file: GraphQLRunner/Dockerfile
+      build-context: GraphQLRunner/
+      comment-pr: true
+      platforms: linux/amd64,linux/arm64
     secrets:
       cosign-private-key: ${{ secrets.COSIGN_PRIVATE_KEY }}
       cosign-password: ${{ secrets.COSIGN_PASSWORD }}
@@ -56,7 +59,7 @@ jobs:
 
   SQLRunnerPostgres-container:
     needs: containers
-    uses: SwanseaUniversityMedical/workflows/.github/workflows/bulk-pr-and-release-container.yaml@v1.1.0-bulk-containers
+    uses: SwanseaUniversityMedical/workflows/.github/workflows/bulk-pr-and-release-container.yaml@v2.1.0-bulk-containers
     with:
       job-name: SQLRunnerPostgres-container
       registry: ${{ vars.HARBOR_REGISTRY }}
@@ -65,6 +68,9 @@ jobs:
       release-info: ${{ needs.containers.outputs.release-info }}
       cosign-public-key: ${{ vars.COSIGN_PUBLIC_KEY }}
       build-file: SQLRunnerPostgres/Dockerfile
+      build-context: SQLRunnerPostgres/
+      comment-pr: true
+      platforms: linux/amd64,linux/arm64
     secrets:
       cosign-private-key: ${{ secrets.COSIGN_PRIVATE_KEY }}
       cosign-password: ${{ secrets.COSIGN_PASSWORD }}
@@ -72,7 +78,7 @@ jobs:
 
   SQLRunnerTrino-container:
     needs: containers
-    uses: SwanseaUniversityMedical/workflows/.github/workflows/bulk-pr-and-release-container.yaml@v1.1.0-bulk-containers
+    uses: SwanseaUniversityMedical/workflows/.github/workflows/bulk-pr-and-release-container.yaml@v2.1.0-bulk-containers
     with:
       job-name: SQLRunnerTrino-container
       registry: ${{ vars.HARBOR_REGISTRY }}
@@ -81,6 +87,9 @@ jobs:
       release-info: ${{ needs.containers.outputs.release-info }}
       cosign-public-key: ${{ vars.COSIGN_PUBLIC_KEY }}
       build-file: SQLRunnerTrino/Dockerfile
+      build-context: SQLRunnerTrino/
+      comment-pr: true
+      platforms: linux/amd64,linux/arm64
     secrets:
       cosign-private-key: ${{ secrets.COSIGN_PRIVATE_KEY }}
       cosign-password: ${{ secrets.COSIGN_PASSWORD }}

@@ -27,31 +27,31 @@ concurrency:
 
 jobs:
   GraphQLRunner-sonar:
-    uses: SwanseaUniversityMedical/workflows/.github/workflows/sonar-dotnet-7.yaml@v2.2.0-sonar-dotnet-7
+    uses: SwanseaUniversityMedical/workflows/.github/workflows/sonar-dotnet-7.yaml@v2.4.0-sonar-dotnet-7
     with:
       project-name: "GraphQLRunner"
       project-file: "GraphQLRunner.csproj"
       project-context: "GraphQLRunner"
-      sonar-url: ${{ vars.SONAR_URL }}
+      sonar-url: ${{ vars.FEDA_SONAR_HOST_URL }}
     secrets:
-      sonar-token: ${{ secrets.SONAR_TOKEN }}
+      sonar-token: ${{ secrets.FEDA_SONAR_TOKEN }}
 
   SQLRunnerPostgres-sonar:
-    uses: SwanseaUniversityMedical/workflows/.github/workflows/sonar-dotnet-7.yaml@v2.2.0-sonar-dotnet-7
+    uses: SwanseaUniversityMedical/workflows/.github/workflows/sonar-dotnet-7.yaml@v2.4.0-sonar-dotnet-7
     with:
       project-name: "SQLRunnerPostgres"
       project-file: "SQLRunnerPostgres.csproj"
       project-context: "SQLRunnerPostgres"
-      sonar-url: ${{ vars.SONAR_URL }}
+      sonar-url: ${{ vars.FEDA_SONAR_HOST_URL }}
     secrets:
-      sonar-token: ${{ secrets.SONAR_TOKEN }}
+      sonar-token: ${{ secrets.FEDA_SONAR_TOKEN }}
 
   SQLRunnerTrino-sonar:
-    uses: SwanseaUniversityMedical/workflows/.github/workflows/sonar-dotnet-7.yaml@v2.2.0-sonar-dotnet-7
+    uses: SwanseaUniversityMedical/workflows/.github/workflows/sonar-dotnet-7.yaml@v2.4.0-sonar-dotnet-7
     with:
       project-name: "SQLRunnerTrino"
       project-file: "SQLRunnerTrino.csproj"
       project-context: "SQLRunnerTrino"
-      sonar-url: ${{ vars.SONAR_URL }}
+      sonar-url: ${{ vars.FEDA_SONAR_HOST_URL }}
     secrets:
-      sonar-token: ${{ secrets.SONAR_TOKEN }}
+      sonar-token: ${{ secrets.FEDA_SONAR_TOKEN }}
