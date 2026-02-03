@@ -27,7 +27,7 @@ concurrency:
 
 jobs:
   GraphQLRunner-sonar:
-    uses: SwanseaUniversityMedical/workflows/.github/workflows/sonar-dotnet-7.yaml@v2.2.0-sonar-dotnet-7
+    uses: SwanseaUniversityMedical/workflows/.github/workflows/sonar-dotnet-7.yaml@v2.4.0-sonar-dotnet-7
     with:
       project-name: "GraphQLRunner"
       project-file: "GraphQLRunner.csproj"
@@ -37,7 +37,7 @@ jobs:
       sonar-token: ${{ secrets.SONAR_TOKEN }}
 
   SQLRunnerPostgres-sonar:
-    uses: SwanseaUniversityMedical/workflows/.github/workflows/sonar-dotnet-7.yaml@v2.2.0-sonar-dotnet-7
+    uses: SwanseaUniversityMedical/workflows/.github/workflows/sonar-dotnet-7.yaml@v2.4.0-sonar-dotnet-7
     with:
       project-name: "SQLRunnerPostgres"
       project-file: "SQLRunnerPostgres.csproj"
@@ -47,7 +47,7 @@ jobs:
       sonar-token: ${{ secrets.SONAR_TOKEN }}
 
   SQLRunnerTrino-sonar:
-    uses: SwanseaUniversityMedical/workflows/.github/workflows/sonar-dotnet-7.yaml@v2.2.0-sonar-dotnet-7
+    uses: SwanseaUniversityMedical/workflows/.github/workflows/sonar-dotnet-7.yaml@v2.4.0-sonar-dotnet-7
     with:
       project-name: "SQLRunnerTrino"
       project-file: "SQLRunnerTrino.csproj"
