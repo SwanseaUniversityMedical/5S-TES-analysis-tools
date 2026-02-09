@@ -43,7 +43,7 @@ jobs:
     uses: SwanseaUniversityMedical/workflows/.github/workflows/bulk-pr-and-release-container.yaml@v2.1.0-bulk-containers
     with:
       job-name: GraphQLRunner-container
-      registry: ${{ vars.HARBOR_REGISTRY }}
+      registry: ${{ vars.HARBOR_FEDA_REGISTRY }}
       registry-user: ${{ vars.HARBOR_USER }}
       registry-repo: ${{ vars.HARBOR_PROJECT }}/${{ vars.HARBOR_REPO }}-GraphQLRunner
       release-info: ${{ needs.containers.outputs.release-info }}
@@ -62,7 +62,7 @@ jobs:
     uses: SwanseaUniversityMedical/workflows/.github/workflows/bulk-pr-and-release-container.yaml@v2.1.0-bulk-containers
     with:
       job-name: SQLRunnerPostgres-container
-      registry: ${{ vars.HARBOR_REGISTRY }}
+      registry: ${{ vars.HARBOR_FEDA_REGISTRY }}
       registry-user: ${{ vars.HARBOR_USER }}
       registry-repo: ${{ vars.HARBOR_PROJECT }}/${{ vars.HARBOR_REPO }}-tre-sqlpg
       release-info: ${{ needs.containers.outputs.release-info }}
@@ -81,7 +81,7 @@ jobs:
     uses: SwanseaUniversityMedical/workflows/.github/workflows/bulk-pr-and-release-container.yaml@v2.1.0-bulk-containers
     with:
       job-name: SQLRunnerTrino-container
-      registry: ${{ vars.HARBOR_REGISTRY }}
+      registry: ${{ vars.HARBOR_FEDA_REGISTRY }}
       registry-user: ${{ vars.HARBOR_USER }}
       registry-repo: ${{ vars.HARBOR_PROJECT }}/${{ vars.HARBOR_REPO }}-tre-sqltrino
       release-info: ${{ needs.containers.outputs.release-info }}
