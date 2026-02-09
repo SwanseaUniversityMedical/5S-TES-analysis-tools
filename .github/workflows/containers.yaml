@@ -1,0 +1,96 @@
+name: Build containers
+
+on:
+  pull_request:
+    # Only consider PRs that change files for this asset, including ci scripts.
+    paths:
+      - ".github/workflows/containers.yaml"
+      - "GraphQLRunner/**"
+      - "SQLRunnerPostgres/**"
+      - "SQLRunnerTrino/**"
+  push:
+    # Only release off of release and maintenance branches for this asset
+    branches:
+      - "main"
+    # Only consider pushes that change files for this asset, including ci scripts
+    paths:
+      - ".github/workflows/containers.yaml"
+      - "GraphQLRunner/**"
+      - "SQLRunnerPostgres/**"
+      - "SQLRunnerTrino/**"
+permissions:
+  contents: write
+  pull-requests: write
+  actions: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  # Cancel early on pull requests if new commits are added,
+  # Don't cancel on release pushes
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  # Job name must be unique across repo to target
+  # branch protection rules "required checks" properly!
+  containers:
+    uses: SwanseaUniversityMedical/workflows/.github/workflows/pr-and-release-repo.yaml@v2.1.2-repo
+    with:
+      job-name: containers
+      release-tag-format: "v${version}-containers"
+
+  GraphQLRunner-container:
+    needs: containers
+    uses: SwanseaUniversityMedical/workflows/.github/workflows/bulk-pr-and-release-container.yaml@v2.1.0-bulk-containers
+    with:
+      job-name: GraphQLRunner-container
+      registry: ${{ vars.HARBOR_FEDA_REGISTRY }}
+      registry-user: ${{ vars.HARBOR_USER }}
+      registry-repo: ${{ vars.HARBOR_PROJECT }}/${{ vars.HARBOR_REPO }}-GraphQLRunner
+      release-info: ${{ needs.containers.outputs.release-info }}
+      cosign-public-key: ${{ vars.COSIGN_PUBLIC_KEY }}
+      build-file: GraphQLRunner/Dockerfile
+      build-context: GraphQLRunner/
+      comment-pr: true
+      platforms: linux/amd64,linux/arm64
+    secrets:
+      cosign-private-key: ${{ secrets.COSIGN_PRIVATE_KEY }}
+      cosign-password: ${{ secrets.COSIGN_PASSWORD }}
+      registry-token: ${{ secrets.HARBOR_TOKEN }}
+
+  SQLRunnerPostgres-container:
+    needs: containers
+    uses: SwanseaUniversityMedical/workflows/.github/workflows/bulk-pr-and-release-container.yaml@v2.1.0-bulk-containers
+    with:
+      job-name: SQLRunnerPostgres-container
+      registry: ${{ vars.HARBOR_FEDA_REGISTRY }}
+      registry-user: ${{ vars.HARBOR_USER }}
+      registry-repo: ${{ vars.HARBOR_PROJECT }}/${{ vars.HARBOR_REPO }}-tre-sqlpg
+      release-info: ${{ needs.containers.outputs.release-info }}
+      cosign-public-key: ${{ vars.COSIGN_PUBLIC_KEY }}
+      build-file: SQLRunnerPostgres/Dockerfile
+      build-context: SQLRunnerPostgres/
+      comment-pr: true
+      platforms: linux/amd64,linux/arm64
+    secrets:
+      cosign-private-key: ${{ secrets.COSIGN_PRIVATE_KEY }}
+      cosign-password: ${{ secrets.COSIGN_PASSWORD }}
+      registry-token: ${{ secrets.HARBOR_TOKEN }}
+
+  SQLRunnerTrino-container:
+    needs: containers
+    uses: SwanseaUniversityMedical/workflows/.github/workflows/bulk-pr-and-release-container.yaml@v2.1.0-bulk-containers
+    with:
+      job-name: SQLRunnerTrino-container
+      registry: ${{ vars.HARBOR_FEDA_REGISTRY }}
+      registry-user: ${{ vars.HARBOR_USER }}
+      registry-repo: ${{ vars.HARBOR_PROJECT }}/${{ vars.HARBOR_REPO }}-tre-sqltrino
+      release-info: ${{ needs.containers.outputs.release-info }}
+      cosign-public-key: ${{ vars.COSIGN_PUBLIC_KEY }}
+      build-file: SQLRunnerTrino/Dockerfile
+      build-context: SQLRunnerTrino/
+      comment-pr: true
+      platforms: linux/amd64,linux/arm64
+    secrets:
+      cosign-private-key: ${{ secrets.COSIGN_PRIVATE_KEY }}
+      cosign-password: ${{ secrets.COSIGN_PASSWORD }}
+      registry-token: ${{ secrets.HARBOR_TOKEN }}

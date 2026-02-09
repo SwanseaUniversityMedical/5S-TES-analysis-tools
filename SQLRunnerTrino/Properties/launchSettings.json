@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "SQLRunnerTrino": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

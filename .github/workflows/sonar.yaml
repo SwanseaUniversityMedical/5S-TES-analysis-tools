@@ -1,0 +1,57 @@
+name: Scan 5S-TES-analysis-tools
+
+on:
+  pull_request:
+    # Only consider PRs that change files for this asset, including ci scripts
+    paths:
+      - ".github/workflows/sonar.yaml"
+      - "GraphQLRunner/**"
+      - "SQLRunnerPostgres/**"
+      - "SQLRunnerTrino/**"
+  push:
+    # Only release off of release and maintenance branches for this asset
+    branches:
+      - "main"
+    # Only consider pushes that change files for this asset, including ci scripts.
+    paths:
+      - ".github/workflows/sonar.yaml"
+      - "GraphQLRunner/**"
+      - "SQLRunnerPostgres/**"
+      - "SQLRunnerTrino/**"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  # Cancel early on pull requests if new commits are added,
+  # Don't cancel on release pushes
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  GraphQLRunner-sonar:
+    uses: SwanseaUniversityMedical/workflows/.github/workflows/sonar-dotnet-7.yaml@v2.4.0-sonar-dotnet-7
+    with:
+      project-name: "GraphQLRunner"
+      project-file: "GraphQLRunner.csproj"
+      project-context: "GraphQLRunner"
+      sonar-url: ${{ vars.FEDA_SONAR_HOST_URL }}
+    secrets:
+      sonar-token: ${{ secrets.FEDA_SONAR_TOKEN }}
+
+  SQLRunnerPostgres-sonar:
+    uses: SwanseaUniversityMedical/workflows/.github/workflows/sonar-dotnet-7.yaml@v2.4.0-sonar-dotnet-7
+    with:
+      project-name: "SQLRunnerPostgres"
+      project-file: "SQLRunnerPostgres.csproj"
+      project-context: "SQLRunnerPostgres"
+      sonar-url: ${{ vars.FEDA_SONAR_HOST_URL }}
+    secrets:
+      sonar-token: ${{ secrets.FEDA_SONAR_TOKEN }}
+
+  SQLRunnerTrino-sonar:
+    uses: SwanseaUniversityMedical/workflows/.github/workflows/sonar-dotnet-7.yaml@v2.4.0-sonar-dotnet-7
+    with:
+      project-name: "SQLRunnerTrino"
+      project-file: "SQLRunnerTrino.csproj"
+      project-context: "SQLRunnerTrino"
+      sonar-url: ${{ vars.FEDA_SONAR_HOST_URL }}
+    secrets:
+      sonar-token: ${{ secrets.FEDA_SONAR_TOKEN }}
