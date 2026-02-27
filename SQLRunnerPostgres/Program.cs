@@ -3,7 +3,7 @@ using System.Data;
 using System.IO;
 using Npgsql;
 
-Console.WriteLine("TREFX SQL Runner Module : Postgress");
+Console.WriteLine("5S-TES SQL Runner Module : Postgres");
 
 // Tre-SQL-PG.exe "--Query=select * from \"profileForm\"" --Output=data.csv
 
@@ -27,7 +27,6 @@ Console.WriteLine($"postgresUsername: {postgresUsername}");
 Console.WriteLine($"postgresPassword: {(string.IsNullOrEmpty(postgresPassword) ? "NOT SET" : "***SET***")}");
 Console.WriteLine($"postgresDatabase: {postgresDatabase}");
 Console.WriteLine($"postgresSchema: {postgresSchema}");
-Console.WriteLine($"Connection String: Host={postgresHost}:{postgresPort};Database={postgresDatabase};Schema={postgresSchema}");
 Console.WriteLine("============================\n");
 
 foreach (var arg in args)
