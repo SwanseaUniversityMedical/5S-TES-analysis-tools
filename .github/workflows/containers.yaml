@@ -40,7 +40,7 @@ jobs:
 
   GraphQLRunner-container:
     needs: containers
-    uses: SwanseaUniversityMedical/workflows/.github/workflows/bulk-pr-and-release-container.yaml@v2.1.0-bulk-containers
+    uses: SwanseaUniversityMedical/workflows/.github/workflows/bulk-pr-and-release-container.yaml@v2.1.3-bulk-containers
     with:
       job-name: GraphQLRunner-container
       registry: ${{ vars.HARBOR_FEDA_REGISTRY }}
@@ -59,7 +59,7 @@ jobs:
 
   SQLRunnerPostgres-container:
     needs: containers
-    uses: SwanseaUniversityMedical/workflows/.github/workflows/bulk-pr-and-release-container.yaml@v2.1.0-bulk-containers
+    uses: SwanseaUniversityMedical/workflows/.github/workflows/bulk-pr-and-release-container.yaml@v2.1.3-bulk-containers
     with:
       job-name: SQLRunnerPostgres-container
       registry: ${{ vars.HARBOR_FEDA_REGISTRY }}
@@ -78,7 +78,7 @@ jobs:
 
   SQLRunnerTrino-container:
     needs: containers
-    uses: SwanseaUniversityMedical/workflows/.github/workflows/bulk-pr-and-release-container.yaml@v2.1.0-bulk-containers
+    uses: SwanseaUniversityMedical/workflows/.github/workflows/bulk-pr-and-release-container.yaml@v2.1.3-bulk-containers
     with:
       job-name: SQLRunnerTrino-container
       registry: ${{ vars.HARBOR_FEDA_REGISTRY }}
