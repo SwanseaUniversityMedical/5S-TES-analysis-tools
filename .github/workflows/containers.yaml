@@ -47,14 +47,13 @@ jobs:
       registry-user: ${{ vars.HARBOR_USER }}
       registry-repo: ${{ vars.HARBOR_PROJECT }}/${{ vars.HARBOR_REPO }}-GraphQLRunner
       release-info: ${{ needs.containers.outputs.release-info }}
-      cosign-public-key: ${{ vars.COSIGN_PUBLIC_KEY }}
+      notation-cert: ${{ vars.NOTATION_CERT }}
       build-file: GraphQLRunner/Dockerfile
       build-context: GraphQLRunner/
       comment-pr: true
       platforms: linux/amd64,linux/arm64
     secrets:
-      cosign-private-key: ${{ secrets.COSIGN_PRIVATE_KEY }}
-      cosign-password: ${{ secrets.COSIGN_PASSWORD }}
+      notation-key: ${{ secrets.NOTATION_KEY }}
       registry-token: ${{ secrets.HARBOR_TOKEN }}
 
   SQLRunnerPostgres-container:
@@ -66,14 +65,13 @@ jobs:
       registry-user: ${{ vars.HARBOR_USER }}
       registry-repo: ${{ vars.HARBOR_PROJECT }}/${{ vars.HARBOR_REPO }}-tre-sqlpg
       release-info: ${{ needs.containers.outputs.release-info }}
-      cosign-public-key: ${{ vars.COSIGN_PUBLIC_KEY }}
+      notation-cert: ${{ vars.NOTATION_CERT }}
       build-file: SQLRunnerPostgres/Dockerfile
       build-context: SQLRunnerPostgres/
       comment-pr: true
       platforms: linux/amd64,linux/arm64
     secrets:
-      cosign-private-key: ${{ secrets.COSIGN_PRIVATE_KEY }}
-      cosign-password: ${{ secrets.COSIGN_PASSWORD }}
+      notation-key: ${{ secrets.NOTATION_KEY }}
       registry-token: ${{ secrets.HARBOR_TOKEN }}
 
   SQLRunnerTrino-container:
@@ -85,12 +83,11 @@ jobs:
       registry-user: ${{ vars.HARBOR_USER }}
       registry-repo: ${{ vars.HARBOR_PROJECT }}/${{ vars.HARBOR_REPO }}-tre-sqltrino
       release-info: ${{ needs.containers.outputs.release-info }}
-      cosign-public-key: ${{ vars.COSIGN_PUBLIC_KEY }}
+      notation-cert: ${{ vars.NOTATION_CERT }}
       build-file: SQLRunnerTrino/Dockerfile
       build-context: SQLRunnerTrino/
       comment-pr: true
       platforms: linux/amd64,linux/arm64
     secrets:
-      cosign-private-key: ${{ secrets.COSIGN_PRIVATE_KEY }}
-      cosign-password: ${{ secrets.COSIGN_PASSWORD }}
+      notation-key: ${{ secrets.NOTATION_KEY }}
       registry-token: ${{ secrets.HARBOR_TOKEN }}
