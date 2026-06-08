@@ -40,7 +40,7 @@ jobs:
 
   GraphQLRunner-container:
     needs: containers
-    uses: SwanseaUniversityMedical/workflows/.github/workflows/bulk-pr-and-release-container.yaml@v3.0.0-bulk-containers
+    uses: SwanseaUniversityMedical/workflows/.github/workflows/bulk-pr-and-release-container.yaml@v4.0.0-bulk-containers
     with:
       job-name: GraphQLRunner-container
       registry: ${{ vars.HARBOR_FEDA_REGISTRY }}
@@ -48,6 +48,7 @@ jobs:
       registry-repo: ${{ vars.HARBOR_PROJECT }}/${{ vars.HARBOR_REPO }}-GraphQLRunner
       release-info: ${{ needs.containers.outputs.release-info }}
       notation-cert: ${{ vars.NOTATION_CERT }}
+      nuget-config: ${{ vars.NUGET_CONFIG }}
       build-file: GraphQLRunner/Dockerfile
       build-context: GraphQLRunner/
       comment-pr: true
@@ -58,7 +59,7 @@ jobs:
 
   SQLRunnerPostgres-container:
     needs: containers
-    uses: SwanseaUniversityMedical/workflows/.github/workflows/bulk-pr-and-release-container.yaml@v3.0.0-bulk-containers
+    uses: SwanseaUniversityMedical/workflows/.github/workflows/bulk-pr-and-release-container.yaml@v4.0.0-bulk-containers
     with:
       job-name: SQLRunnerPostgres-container
       registry: ${{ vars.HARBOR_FEDA_REGISTRY }}
@@ -66,6 +67,7 @@ jobs:
       registry-repo: ${{ vars.HARBOR_PROJECT }}/${{ vars.HARBOR_REPO }}-tre-sqlpg
       release-info: ${{ needs.containers.outputs.release-info }}
       notation-cert: ${{ vars.NOTATION_CERT }}
+      nuget-config: ${{ vars.NUGET_CONFIG }}
       build-file: SQLRunnerPostgres/Dockerfile
       build-context: SQLRunnerPostgres/
       comment-pr: true
@@ -76,7 +78,7 @@ jobs:
 
   SQLRunnerTrino-container:
     needs: containers
-    uses: SwanseaUniversityMedical/workflows/.github/workflows/bulk-pr-and-release-container.yaml@v3.0.0-bulk-containers
+    uses: SwanseaUniversityMedical/workflows/.github/workflows/bulk-pr-and-release-container.yaml@v4.0.0-bulk-containers
     with:
       job-name: SQLRunnerTrino-container
       registry: ${{ vars.HARBOR_FEDA_REGISTRY }}
@@ -84,6 +86,7 @@ jobs:
       registry-repo: ${{ vars.HARBOR_PROJECT }}/${{ vars.HARBOR_REPO }}-tre-sqltrino
       release-info: ${{ needs.containers.outputs.release-info }}
       notation-cert: ${{ vars.NOTATION_CERT }}
+      nuget-config: ${{ vars.NUGET_CONFIG }}
       build-file: SQLRunnerTrino/Dockerfile
       build-context: SQLRunnerTrino/
       comment-pr: true
